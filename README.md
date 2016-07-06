@@ -54,12 +54,14 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 ####[[⬆]](#toc) <a name='simple'>Simple Linux Questions:</a>
 
 * What is the name and the UID of the administrator user?
-`root uid->0`
+** `root uid->0`
 * How to list all files, including hidden ones, in a directory?
-`ls -a`
+** `ls -a`
 * What is the Unix/Linux command to remove a directory and its contents?
-`rm -rf`
+** `rm -rf`
 * Which command will show you free/used memory? Does free memory exist on Linux?
+** `free`
+** `Don't confuse free memory with unused memory. Free memory, in the unix world is a page of physical memory that has no logical data mapped to it. Unused memory does have some data mapped to it, but it is currently not in active use by a running process. [Link](http://serverfault.com/questions/9442/why-does-red-hat-linux-report-less-free-memory-on-the-system-than-is-actually-av)`
 * How to search for the string "my konfi is the best" in files of a directory recursively?
 * How to connect to a remote server or what is SSH?
 * How to get all environment variables and how can you use them?
