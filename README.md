@@ -59,16 +59,16 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * Which command will show you free/used memory? Does free memory exist on Linux? `free; Don't confuse free memory with unused memory. Free memory, in the unix world is a page of physical memory that has no logical data mapped to it. Unused memory does have some data mapped to it, but it is currently not in active use by a running process. [Link](http://serverfault.com/questions/9442/why-does-red-hat-linux-report-less-free-memory-on-the-system-than-is-actually-av)`
 * How to search for the string "my konfi is the best" in files of a directory recursively? `grep -R "my konfi is the best" file_or_directory`
 * How to connect to a remote server or what is SSH? `telnet or ssh; SSH is Secure Shell`
-* How to get all environment variables and how can you use them?
-* I get "command not found" when I run ```ifconfig -a```. What can be wrong?
-* What happens if I type TAB-TAB?
-* What command will show the available disk space on the Unix/Linux system?
-* What commands do you know that can be used to check DNS records?
-* What Unix/Linux commands will alter a files ownership, files permissions?
-* What does ```chmod +x FILENAME```do?
-* What does the permission 0750 on a file mean?
-* What does the permission 0750 on a directory mean?
-* How to add a new system user without login permissions?
+* How to get all environment variables and how can you use them? `printenv or env; use $VARIABLE`
+* I get "command not found" when I run ```ifconfig -a```. What can be wrong? `The path of ifconfig(/sbin) is not in your PATH`
+* What happens if I type TAB-TAB? `You will get a list of all available cmds in your PATH`
+* What command will show the available disk space on the Unix/Linux system? `df`
+* What commands do you know that can be used to check DNS records?`dig or nslookup`
+* What Unix/Linux commands will alter a files ownership, files permissions?`chown, chmod`
+* What does ```chmod +x FILENAME```do? `add execution permission to FILENAME`
+* What does the permission 0750 on a file mean? `user rwx; group rx; others none`
+* What does the permission 0750 on a directory mean? `user rw and go into; group r and go into; others none`
+* How to add a new system user without login permissions?`give user with /bin/false shell`
 * How to add/remove a group from a user?
 * What is a bash alias?
 * How do you set the mail address of the root/a user?
