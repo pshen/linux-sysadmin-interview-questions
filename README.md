@@ -69,16 +69,16 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * What does the permission 0750 on a file mean? `user rwx; group rx; others none`
 * What does the permission 0750 on a directory mean? `user rw and go into; group r and go into; others none`
 * How to add a new system user without login permissions?`give user with /bin/false shell`
-* How to add/remove a group from a user?
-* What is a bash alias?
-* How do you set the mail address of the root/a user?
-* What does CTRL-c do?
-* What is in /etc/services?
-* How to redirect STDOUT and STDERR in bash? (> /dev/null 2>&1)
-* What is the difference between UNIX and Linux.
-* What is the difference between Telnet and SSH?
-* Explain the three load averages and what do they indicate.
-* Can you name a lower-case letter that is not a valid option for GNU ```ls```?
+* How to add/remove a group from a user? `add: usermod -a -G groupname user; remove: gpasswd -d user groupname`
+* What is a bash alias? `nothing more than a keyboard shortcut, or abbreviation`
+* How do you set the mail address of the root/a user? `put mail address in your .forward file`
+* What does CTRL-c do? `kill a process with the signal SIGINT`
+* What is in /etc/services? `associate human friendly name to machine friendly port`
+* How to redirect STDOUT and STDERR in bash? (> /dev/null 2>&1) `> is STDOUT, 2> is STDERR`
+* What is the difference between UNIX and Linux. `Linux is a UNIX clone and free software; UNIX is not free, and was created by AT&T Bell Labs.`
+* What is the difference between Telnet and SSH? `SSH encryptes the communication, Telnet not.`
+* Explain the three load averages and what do they indicate. `last 1 min, 5mins, and 15mins`
+* Can you name a lower-case letter that is not a valid option for GNU ```ls```? `-y`
 
 
 ####[[⬆]](#toc) <a name='medium'>Medium Linux Questions:</a>
