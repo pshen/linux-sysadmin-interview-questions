@@ -84,25 +84,25 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 ####[[⬆]](#toc) <a name='medium'>Medium Linux Questions:</a>
 
 * What do the following commands do and how would you use them?
- * ```tee```
- * ```awk```
- * ```tr```
- * ```cut```
- * ```tac```
- * ```curl```
- * ```wget```
- * ```watch```
- * ```head```
- * ```tail```
-* What does an ```&``` after a command do?
-* What does ```& disown``` after a command do?
-* What is a packet filter and how does it work?
-* What is Virtual Memory?
-* What is swap and what is it used for?
-* What is an A record, an NS record, a PTR record, a CNAME record, an MX record?
-* Are there any other RRs and what are they used for?
-* What is a Split-Horizon DNS?
-* What is the sticky bit?
+ * ```tee``` `read from standard input and write to files and standard output; use case: watching some (log)output and writing to a file`
+ * ```awk``` `pattern scanning and processing language; use case: I want 2nd column of the output`
+ * ```tr``` `Translate, squeeze, and/or delete characters from standard input, writing to standard output; use case: upper case to lower case`
+ * ```cut``` `Print selected parts of lines from each FILE to standard output. use case: similar to awk` 
+ * ```tac``` `Last line first out`
+ * ```curl``` `a tool to transfer data from or to a server, using a lot of protocols, like HTTP, HTTPS, FTP etc; use case: cmdline HTTP test tool`
+ * ```wget``` `a tool for download of file from web`
+ * ```watch``` `execute a program periodically and output to the screen; use case: watch the system load`
+ * ```head``` `output the first lines of the file; use case: check the first lines of logfile`
+ * ```tail``` `print the last lines of the file to standard output; use case: continously watch the logfile`
+* What does an ```&``` after a command do? `If a command is terminated by the control operator &, the shell executes the command in the background in a subshell. The shell does not wait for the command to finish, and the return status is 0.`
+* What does ```& disown``` after a command do? `run the previous cmd in subshell, and run disown immediately`
+* What is a packet filter and how does it work? `a piece of software built into kernel which looks the header of packets and decide the fates of the packet. DROP, ACCEPT and so on`
+* What is Virtual Memory? `using disk as an extension of RAM so that usable memory grows correspondly; combined size of physical memory and swap space is the amount of VM available.`
+* What is swap and what is it used for? `when program requires more memory, the kernel swaps out less used pages to swap and give program more memory which it needs immediately.`
+* What is an A record, an NS record, a PTR record, a CNAME record, an MX record? `A stands for address(domain->IP), NS for nameserver, PTR opposite of A (IP->domain), CNAME for Canonical Name, MX for mail exchange`
+* Are there any other RRs and what are they used for? `AAAA for IPV6, TXT for human readable text record`
+* What is a Split-Horizon DNS? `base on the source of query, give different dns answers. For example: same domain can give two answers given external or internal networking conditions`
+* What is the sticky bit? `when the sticky bit of directory is set, in this directory, only the file's owner, dir's owner or root can delete or rename it. Without it, any users can do; For example: the sticky bit is normally enabled on /tmp`
 * What does the immutable bit do to a file?
 * What is the difference between hardlinks and symlinks? What happens when you remove the source to a symlink/hardlink?
 * What is an inode and what fields are stored in an inode?
