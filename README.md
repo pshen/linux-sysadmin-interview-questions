@@ -113,10 +113,10 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * What is the difference between local and remote port forwarding? `http://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot; so basically local creating a tunnel for client -> server, remote creating a tunnel for client <- server.`
 * What are the steps to add a user to a system without using useradd/adduser? `edit /etc/passwd; edit /etc/group; create home dir; setup password by passwd cmd`
 * What is MAJOR and MINOR numbers of special files? `MAJOR number identifies the driver associates with the device, i.e /dev/null to driver 1; MINOR number is used by the kernel to determine exactly which device is being referred to. i.e. a direct pointer to your dvice from the kernel`
-* Describe the mknod command and when you'd use it.
-* Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space.
-* Describe a scenario when deleting a file, but 'df' not showing the space being freed.
-* Describe how 'ps' works.
+* Describe the mknod command and when you'd use it. `make block or character special files; create a named pipe. one process reads from it, another writes to it.`
+* Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space. `out of inodes`
+* Describe a scenario when deleting a file, but 'df' not showing the space being freed. `space will not be freed if the files are still opened. use lsof | grep deleted to find the open deleted files`
+* Describe how 'ps' works. `ps works by reading from proc file system. check "strace -e open ps"`
 * What happens to a child process that dies and has no parent process to wait for it and what’s bad about this?
 * Explain briefly each one of the process states.
 * How to know which process listens on a specific port?
