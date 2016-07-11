@@ -102,17 +102,17 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * What is an A record, an NS record, a PTR record, a CNAME record, an MX record? `A stands for address(domain->IP), NS for nameserver, PTR opposite of A (IP->domain), CNAME for Canonical Name, MX for mail exchange`
 * Are there any other RRs and what are they used for? `AAAA for IPV6, TXT for human readable text record`
 * What is a Split-Horizon DNS? `base on the source of query, give different dns answers. For example: same domain can give two answers given external or internal networking conditions`
-* What is the sticky bit? `when the sticky bit of directory is set, in this directory, only the file's owner, dir's owner or root can delete or rename it. Without it, any users can do; For example: the sticky bit is normally enabled on /tmp`
-* What does the immutable bit do to a file?
-* What is the difference between hardlinks and symlinks? What happens when you remove the source to a symlink/hardlink?
-* What is an inode and what fields are stored in an inode?
-* How to force/trigger a file system check on next reboot?
-* What is SNMP and what is it used for?
-* What is a runlevel and how to get the current runlevel?
-* What is SSH port forwarding?
-* What is the difference between local and remote port forwarding?
-* What are the steps to add a user to a system without using useradd/adduser?
-* What is MAJOR and MINOR numbers of special files?
+* What is the sticky bit? `when the sticky bit of directory is set, in this directory, only the file's owner, dir's owner or root can delete or rename it. Without it, any users can do; For example: the sticky bit is normally enabled on /tmp; use chmod +t or chmod -t`
+* What does the immutable bit do to a file? `a file with immutable bit can NOT be modified/renamed/deleted and no hard/soft link can be created; only root user can add immutable bit, for example: chattr +i/-i filename and lsattr filename`
+* What is the difference between hardlinks and symlinks? What happens when you remove the source to a symlink/hardlink? `hardlink and file points to the same inode; soft link points to a different inode(->datablock). That datablock points to the file. When there is no inode pointing to the datablock, the datablock will be removed by the VFS.`
+* What is an inode and what fields are stored in an inode? `inode is index node, which is a data structure which represents to the file system object. Each inode stores the attributes and disk block location(s) of the filesystem object's data.`
+* How to force/trigger a file system check on next reboot? `touch /forcefsck or shutdown -F -r now`
+* What is SNMP and what is it used for? `Simple Network Management Protocol; used for collecting and organizing info about managed devices on IP networks and for modifying that info to change device behavior.`
+* What is a runlevel and how to get the current runlevel? `a state of init and the whole system that defines what system services are operatings; 0 halt, 1 single user mode, 2 local multiuser without networking, 3 with networking, 4 not used, 5 full multiuser with networking and X, 6 Reboot; runlevel cmd for giving you the current runlevel`
+* What is SSH port forwarding? `create a secure connection between local machine and remote server, through which services can be relayed.`
+* What is the difference between local and remote port forwarding? `http://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot; so basically local creating a tunnel for client -> server, remote creating a tunnel for client <- server.`
+* What are the steps to add a user to a system without using useradd/adduser? `edit /etc/passwd; edit /etc/group; create home dir; setup password by passwd cmd`
+* What is MAJOR and MINOR numbers of special files? `MAJOR number identifies the driver associates with the device, i.e /dev/null to driver 1; MINOR number is used by the kernel to determine exactly which device is being referred to. i.e. a direct pointer to your dvice from the kernel`
 * Describe the mknod command and when you'd use it.
 * Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space.
 * Describe a scenario when deleting a file, but 'df' not showing the space being freed.
