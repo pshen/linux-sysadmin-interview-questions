@@ -117,16 +117,16 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space. `out of inodes`
 * Describe a scenario when deleting a file, but 'df' not showing the space being freed. `space will not be freed if the files are still opened. use lsof | grep deleted to find the open deleted files`
 * Describe how 'ps' works. `ps works by reading from proc file system. check "strace -e open ps"`
-* What happens to a child process that dies and has no parent process to wait for it and what’s bad about this?
-* Explain briefly each one of the process states.
-* How to know which process listens on a specific port?
-* What is a zombie process and what could be the cause of it?
-* You run a bash script and you want to see its output on your terminal and save it to a file at the same time. How could you do it?
-* Explain what echo "1" > /proc/sys/net/ipv4/ip_forward does.
-* Describe briefly the steps you need to take in order to create and install a valid certificate for the site https://foo.example.com.
-* Can you have several HTTPS virtual hosts sharing the same IP?
-* What is a wildcard certificate?
-* Which Linux file types do you know?
+* What happens to a child process that dies and has no parent process to wait for it and what’s bad about this? `it becomes zombie process; and it's not possible to kill it; it must be waited on by its parent process; Killing the parent process will solve it`
+* Explain briefly each one of the process states. `R: Running, D: uninterruptible sleep (wait IO), S: interruptible sleep(waiting for event to complete), Z: defunct/zombie, T: stopped `
+* How to know which process listens on a specific port? `netstat -anp | grep LISTEN`
+* What is a zombie process and what could be the cause of it? `a child process dies, but no parent process waits for it.`
+* You run a bash script and you want to see its output on your terminal and save it to a file at the same time. How could you do it? `program | tee filename`
+* Explain what echo "1" > /proc/sys/net/ipv4/ip_forward does. `enable ip forwarding on the host`
+* Describe briefly the steps you need to take in order to create and install a valid certificate for the site https://foo.example.com. `create private key, generate csr request file, send to CA, get the signed valid cert and install in the apache server. cert with intermediate cert and priv key`
+* Can you have several HTTPS virtual hosts sharing the same IP? `Yes, as long as the server supports SNI (server name indication)`
+* What is a wildcard certificate? `a certificate can be used for all subdomains, i.e \*.google.com`
+* Which Linux file types do you know? `regular files, directories, block file, pipe, character device files, symbolic links, socket files`
 * What is the difference between a process and a thread? And parent and child processes after a fork system call?
 * What is the difference between exec and fork?
 * What is "nohup" used for?
