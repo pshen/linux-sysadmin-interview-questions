@@ -120,42 +120,78 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
  * ```watch``` `execute a program periodically and output to the screen; use case: watch the system load`
  * ```head``` `output the first lines of the file; use case: check the first lines of logfile`
  * ```tail``` `print the last lines of the file to standard output; use case: continously watch the logfile`
-* What does an ```&``` after a command do? `If a command is terminated by the control operator &, the shell executes the command in the background in a subshell. The shell does not wait for the command to finish, and the return status is 0.`
-* What does ```& disown``` after a command do? `run the previous cmd in subshell, and run disown immediately`
-* What is a packet filter and how does it work? `a piece of software built into kernel which looks the header of packets and decide the fates of the packet. DROP, ACCEPT and so on`
-* What is Virtual Memory? `using disk as an extension of RAM so that usable memory grows correspondly; combined size of physical memory and swap space is the amount of VM available.`
-* What is swap and what is it used for? `when program requires more memory, the kernel swaps out less used pages to swap and give program more memory which it needs immediately.`
-* What is an A record, an NS record, a PTR record, a CNAME record, an MX record? `A stands for address(domain->IP), NS for nameserver, PTR opposite of A (IP->domain), CNAME for Canonical Name, MX for mail exchange`
-* Are there any other RRs and what are they used for? `AAAA for IPV6, TXT for human readable text record`
-* What is a Split-Horizon DNS? `base on the source of query, give different dns answers. For example: same domain can give two answers given external or internal networking conditions`
-* What is the sticky bit? `when the sticky bit of directory is set, in this directory, only the file's owner, dir's owner or root can delete or rename it. Without it, any users can do; For example: the sticky bit is normally enabled on /tmp; use chmod +t or chmod -t`
-* What does the immutable bit do to a file? `a file with immutable bit can NOT be modified/renamed/deleted and no hard/soft link can be created; only root user can add immutable bit, for example: chattr +i/-i filename and lsattr filename`
-* What is the difference between hardlinks and symlinks? What happens when you remove the source to a symlink/hardlink? `hardlink and file points to the same inode; soft link points to a different inode(->datablock). That datablock points to the file. When there is no inode pointing to the datablock, the datablock will be removed by the VFS.`
-* What is an inode and what fields are stored in an inode? `inode is index node, which is a data structure which represents to the file system object. Each inode stores the attributes and disk block location(s) of the filesystem object's data.`
-* How to force/trigger a file system check on next reboot? `touch /forcefsck or shutdown -F -r now`
-* What is SNMP and what is it used for? `Simple Network Management Protocol; used for collecting and organizing info about managed devices on IP networks and for modifying that info to change device behavior.`
-* What is a runlevel and how to get the current runlevel? `a state of init and the whole system that defines what system services are operatings; 0 halt, 1 single user mode, 2 local multiuser without networking, 3 with networking, 4 not used, 5 full multiuser with networking and X, 6 Reboot; runlevel cmd for giving you the current runlevel`
-* What is SSH port forwarding? `create a secure connection between local machine and remote server, through which services can be relayed.`
-* What is the difference between local and remote port forwarding? `http://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot; so basically local creating a tunnel for client -> server, remote creating a tunnel for client <- server.`
-* What are the steps to add a user to a system without using useradd/adduser? `edit /etc/passwd; edit /etc/group; create home dir; setup password by passwd cmd`
-* What is MAJOR and MINOR numbers of special files? `MAJOR number identifies the driver associates with the device, i.e /dev/null to driver 1; MINOR number is used by the kernel to determine exactly which device is being referred to. i.e. a direct pointer to your dvice from the kernel`
-* Describe the mknod command and when you'd use it. `make block or character special files; create a named pipe. one process reads from it, another writes to it.`
-* Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space. `out of inodes`
-* Describe a scenario when deleting a file, but 'df' not showing the space being freed. `space will not be freed if the files are still opened. use lsof | grep deleted to find the open deleted files`
-* Describe how 'ps' works. `ps works by reading from proc file system. check "strace -e open ps"`
-* What happens to a child process that dies and has no parent process to wait for it and what’s bad about this? `it becomes zombie process; and it's not possible to kill it; it must be waited on by its parent process; Killing the parent process will solve it`
-* Explain briefly each one of the process states. `R: Running, D: uninterruptible sleep (wait IO), S: interruptible sleep(waiting for event to complete), Z: defunct/zombie, T: stopped `
-* How to know which process listens on a specific port? `netstat -anp | grep LISTEN`
-* What is a zombie process and what could be the cause of it? `a child process dies, but no parent process waits for it.`
-* You run a bash script and you want to see its output on your terminal and save it to a file at the same time. How could you do it? `program | tee filename`
-* Explain what echo "1" > /proc/sys/net/ipv4/ip_forward does. `enable ip forwarding on the host`
-* Describe briefly the steps you need to take in order to create and install a valid certificate for the site https://foo.example.com. `create private key, generate csr request file, send to CA, get the signed valid cert and install in the apache server. cert with intermediate cert and priv key`
-* Can you have several HTTPS virtual hosts sharing the same IP? `Yes, as long as the server supports SNI (server name indication)`
-* What is a wildcard certificate? `a certificate can be used for all subdomains, i.e \*.google.com`
-* Which Linux file types do you know? `regular files, directories, block file, pipe, character device files, symbolic links, socket files`
-* What is the difference between a process and a thread? And parent and child processes after a fork system call? `threads of same process run in a shared memory space; while processes run in separated memory spaces.; fork creates a new process as child of the caller(parent) process (or duplicates the current process). They run in the separate memory space.`
-* What is the difference between exec and fork? `exec replaces the memory space with a new program.`
-* What is "nohup" used for? `when run a program in the shell, it forks a new process. When parent shell exits, the forked process will be killed too. nohup is used for telling the process to ignore SIGHUP.`
+* What does an ```&``` after a command do?
+ * `If a command is terminated by the control operator &, the shell executes the command in the background in a subshell. The shell does not wait for the command to finish, and the return status is 0.`
+* What does ```& disown``` after a command do?
+ * `run the previous cmd in subshell, and run disown immediately`
+* What is a packet filter and how does it work?
+ * `a piece of software built into kernel which looks the header of packets and decide the fates of the packet. DROP, ACCEPT and so on`
+* What is Virtual Memory?
+ * `using disk as an extension of RAM so that usable memory grows correspondly; combined size of physical memory and swap space is the amount of VM available.`
+* What is swap and what is it used for?
+ * `when program requires more memory, the kernel swaps out less used pages to swap and give program more memory which it needs immediately.`
+* What is an A record, an NS record, a PTR record, a CNAME record, an MX record?
+ * `A stands for address(domain->IP), NS for nameserver, PTR opposite of A (IP->domain), CNAME for Canonical Name, MX for mail exchange`
+* Are there any other RRs and what are they used for?
+ * `AAAA for IPV6, TXT for human readable text record`
+* What is a Split-Horizon DNS?
+ * `base on the source of query, give different dns answers. For example: same domain can give two answers given external or internal networking conditions`
+* What is the sticky bit?
+ * `when the sticky bit of directory is set, in this directory, only the file's owner, dir's owner or root can delete or rename it. Without it, any users can do; For example: the sticky bit is normally enabled on /tmp; use chmod +t or chmod -t`
+* What does the immutable bit do to a file?
+ * `a file with immutable bit can NOT be modified/renamed/deleted and no hard/soft link can be created; only root user can add immutable bit, for example: chattr +i/-i filename and lsattr filename`
+* What is the difference between hardlinks and symlinks? What happens when you remove the source to a symlink/hardlink?
+ * `hardlink and file points to the same inode; soft link points to a different inode(->datablock). That datablock points to the file. When there is no inode pointing to the datablock, the datablock will be removed by the VFS.`
+* What is an inode and what fields are stored in an inode?
+ * `inode is index node, which is a data structure which represents to the file system object. Each inode stores the attributes and disk block location(s) of the filesystem object's data.`
+* How to force/trigger a file system check on next reboot?
+ * `touch /forcefsck or shutdown -F -r now`
+* What is SNMP and what is it used for?
+ * `Simple Network Management Protocol; used for collecting and organizing info about managed devices on IP networks and for modifying that info to change device behavior.`
+* What is a runlevel and how to get the current runlevel?
+ * `a state of init and the whole system that defines what system services are operatings; 0 halt, 1 single user mode, 2 local multiuser without networking, 3 with networking, 4 not used, 5 full multiuser with networking and X, 6 Reboot; runlevel cmd for giving you the current runlevel`
+* What is SSH port forwarding?
+ * `create a secure connection between local machine and remote server, through which services can be relayed.`
+* What is the difference between local and remote port forwarding?
+ * `http://unix.stackexchange.com/questions/115897/whats-ssh-port-forwarding-and-whats-the-difference-between-ssh-local-and-remot; so basically local creating a tunnel for client -> server, remote creating a tunnel for client <- server.`
+* What are the steps to add a user to a system without using useradd/adduser?
+ * `edit /etc/passwd; edit /etc/group; create home dir; setup password by passwd cmd`
+* What is MAJOR and MINOR numbers of special files?
+ * `MAJOR number identifies the driver associates with the device, i.e /dev/null to driver 1; MINOR number is used by the kernel to determine exactly which device is being referred to. i.e. a direct pointer to your dvice from the kernel`
+* Describe the mknod command and when you'd use it.
+ * `make block or character special files; create a named pipe. one process reads from it, another writes to it.`
+* Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space.
+ * `out of inodes`
+* Describe a scenario when deleting a file, but 'df' not showing the space being freed.
+ * `space will not be freed if the files are still opened. use lsof | grep deleted to find the open deleted files`
+* Describe how 'ps' works.
+ * `ps works by reading from proc file system. check "strace -e open ps"`
+* What happens to a child process that dies and has no parent process to wait for it and what’s bad about this?
+ * `it becomes zombie process; and it's not possible to kill it; it must be waited on by its parent process; Killing the parent process will solve it`
+* Explain briefly each one of the process states.
+ * `R: Running, D: uninterruptible sleep (wait IO), S: interruptible sleep(waiting for event to complete), Z: defunct/zombie, T: stopped `
+* How to know which process listens on a specific port?
+ * `netstat -anp | grep LISTEN`
+* What is a zombie process and what could be the cause of it?
+ * `a child process dies, but no parent process waits for it.`
+* You run a bash script and you want to see its output on your terminal and save it to a file at the same time. How could you do it?
+ * `program | tee filename`
+* Explain what echo "1" > /proc/sys/net/ipv4/ip_forward does.
+ * `enable ip forwarding on the host`
+* Describe briefly the steps you need to take in order to create and install a valid certificate for the site https://foo.example.com.
+ * `create private key, generate csr request file, send to CA, get the signed valid cert and install in the apache server. cert with intermediate cert and priv key`
+* Can you have several HTTPS virtual hosts sharing the same IP?
+ * `Yes, as long as the server supports SNI (server name indication)`
+* What is a wildcard certificate?
+ * `a certificate can be used for all subdomains, i.e \*.google.com`
+* Which Linux file types do you know?
+ * `regular files, directories, block file, pipe, character device files, symbolic links, socket files`
+* What is the difference between a process and a thread? And parent and child processes after a fork system call?
+ * `threads of same process run in a shared memory space; while processes run in separated memory spaces.; fork creates a new process as child of the caller(parent) process (or duplicates the current process). They run in the separate memory space.`
+* What is the difference between exec and fork?
+ * `exec replaces the memory space with a new program.`
+* What is "nohup" used for?
+ * `when run a program in the shell, it forks a new process. When parent shell exits, the forked process will be killed too. nohup is used for telling the process to ignore SIGHUP.`
 * What is the difference between these two commands?
  * ```myvar=hello```
  * ```export myvar=hello```
