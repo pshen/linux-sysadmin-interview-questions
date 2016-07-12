@@ -127,9 +127,9 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * Can you have several HTTPS virtual hosts sharing the same IP? `Yes, as long as the server supports SNI (server name indication)`
 * What is a wildcard certificate? `a certificate can be used for all subdomains, i.e \*.google.com`
 * Which Linux file types do you know? `regular files, directories, block file, pipe, character device files, symbolic links, socket files`
-* What is the difference between a process and a thread? And parent and child processes after a fork system call?
-* What is the difference between exec and fork?
-* What is "nohup" used for?
+* What is the difference between a process and a thread? And parent and child processes after a fork system call? `threads of same process run in a shared memory space; while processes run in separated memory spaces.; fork creates a new process as child of the caller(parent) process (or duplicates the current process). They run in the separate memory space.`
+* What is the difference between exec and fork? `exec replaces the memory space with a new program.`
+* What is "nohup" used for? `when run a program in the shell, it forks a new process. When parent shell exits, the forked process will be killed too. nohup is used for telling the process to ignore SIGHUP.`
 * What is the difference between these two commands?
  * ```myvar=hello```
  * ```export myvar=hello```
