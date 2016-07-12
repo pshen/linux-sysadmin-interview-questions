@@ -193,13 +193,22 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * What is "nohup" used for?
  * `when run a program in the shell, it forks a new process. When parent shell exits, the forked process will be killed too. nohup is used for telling the process to ignore SIGHUP.`
 * What is the difference between these two commands?
- * ```myvar=hello```
- * ```export myvar=hello```
+ * ```myvar=hello``` `non-exported var is NOT available to other programs`
+ * ```export myvar=hello``` `exported var is available to other programs`
 * How many NTP servers would you configure in your local ntp.conf?
+ * `if more than NTP server is required, then use four to avoid 'falseticker'`
 * What does the column 'reach' mean in ```ntpq -p``` output?
+ * #TODO
 * You need to upgrade kernel at 100-1000 servers, how you would do this?
+ * use some centralized configuration software, like puppet or cfengine.
 * How can you get Host, Channel, ID, LUN of SCSI disk?
+ * ```cat /proc/scsi/scsi```
 * How can you limit process memory usage?
+ * `use Linux control group, i.e. 500M for virtual memory, 5000M for swap`
+ * ``` cgcreate -g memory:/myGroup
+echo $(( 500 * 1024 * 1024 )) > /sys/fs/cgroup/memory/myGroup/memory.limit_in_bytes
+echo $(( 5000 * 1024 * 1024 )) > /sys/fs/cgroup/memory/myGroup/memory.memsw.limit_in_bytes ```
+ * ``` cgexec -g memory:myGroup your_program ```
 * What is bash quick substitution/caret replace(^x^y)?
 * Do you know of any alternative shells? If so, have you used any?
 * What is a tarpipe (or, how would you go about copying everything, including hardlinks and special files, from one server to another)?
