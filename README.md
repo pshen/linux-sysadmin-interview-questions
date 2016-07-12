@@ -53,32 +53,58 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 
 ####[[⬆]](#toc) <a name='simple'>Simple Linux Questions:</a>
 
-* What is the name and the UID of the administrator user? `root uid->0`
-* How to list all files, including hidden ones, in a directory? `ls -a`
-* What is the Unix/Linux command to remove a directory and its contents? `rm -rf`
-* Which command will show you free/used memory? Does free memory exist on Linux? `free; Don't confuse free memory with unused memory. Free memory, in the unix world is a page of physical memory that has no logical data mapped to it. Unused memory does have some data mapped to it, but it is currently not in active use by a running process. [Link](http://serverfault.com/questions/9442/why-does-red-hat-linux-report-less-free-memory-on-the-system-than-is-actually-av)`
-* How to search for the string "my konfi is the best" in files of a directory recursively? `grep -R "my konfi is the best" file_or_directory`
-* How to connect to a remote server or what is SSH? `telnet or ssh; SSH is Secure Shell`
-* How to get all environment variables and how can you use them? `printenv or env; use $VARIABLE`
-* I get "command not found" when I run ```ifconfig -a```. What can be wrong? `The path of ifconfig(/sbin) is not in your PATH`
-* What happens if I type TAB-TAB? `You will get a list of all available cmds in your PATH`
-* What command will show the available disk space on the Unix/Linux system? `df`
-* What commands do you know that can be used to check DNS records?`dig or nslookup`
-* What Unix/Linux commands will alter a files ownership, files permissions?`chown, chmod`
-* What does ```chmod +x FILENAME```do? `add execution permission to FILENAME`
-* What does the permission 0750 on a file mean? `user rwx; group rx; others none`
-* What does the permission 0750 on a directory mean? `user rw and go into; group r and go into; others none`
-* How to add a new system user without login permissions?`give user with /bin/false shell`
-* How to add/remove a group from a user? `add: usermod -a -G groupname user; remove: gpasswd -d user groupname`
-* What is a bash alias? `nothing more than a keyboard shortcut, or abbreviation`
-* How do you set the mail address of the root/a user? `put mail address in your .forward file`
-* What does CTRL-c do? `kill a process with the signal SIGINT`
-* What is in /etc/services? `associate human friendly name to machine friendly port`
-* How to redirect STDOUT and STDERR in bash? (> /dev/null 2>&1) `> is STDOUT, 2> is STDERR`
-* What is the difference between UNIX and Linux. `Linux is a UNIX clone and free software; UNIX is not free, and was created by AT&T Bell Labs.`
-* What is the difference between Telnet and SSH? `SSH encryptes the communication, Telnet not.`
-* Explain the three load averages and what do they indicate. `last 1 min, 5mins, and 15mins`
-* Can you name a lower-case letter that is not a valid option for GNU ```ls```? `-y`
+* What is the name and the UID of the administrator user?
+ * `root uid->0`
+* How to list all files, including hidden ones, in a directory?
+ * `ls -a`
+* What is the Unix/Linux command to remove a directory and its contents?
+ * `rm -rf`
+* Which command will show you free/used memory? Does free memory exist on Linux?
+ * `free; Don't confuse free memory with unused memory. Free memory, in the unix world is a page of physical memory that has no logical data mapped to it. Unused memory does have some data mapped to it, but it is currently not in active use by a running process. [Link](http://serverfault.com/questions/9442/why-does-red-hat-linux-report-less-free-memory-on-the-system-than-is-actually-av)`
+* How to search for the string "my konfi is the best" in files of a directory recursively?
+ * `grep -R "my konfi is the best" file_or_directory`
+* How to connect to a remote server or what is SSH?
+ * `telnet or ssh; SSH is Secure Shell`
+* How to get all environment variables and how can you use them?
+ * `printenv or env; use $VARIABLE`
+* I get "command not found" when I run ```ifconfig -a```. What can be wrong?
+ * `The path of ifconfig(/sbin) is not in your PATH`
+* What happens if I type TAB-TAB?
+ * `You will get a list of all available cmds in your PATH`
+* What command will show the available disk space on the Unix/Linux system?
+ * `df`
+* What commands do you know that can be used to check DNS records?
+ * `dig or nslookup`
+* What Unix/Linux commands will alter a files ownership, files permissions?
+ * `chown, chmod`
+* What does ```chmod +x FILENAME```do?
+ * `add execution permission to FILENAME`
+* What does the permission 0750 on a file mean?
+ * `user rwx; group rx; others none`
+* What does the permission 0750 on a directory mean?
+ * `user rw and go into; group r and go into; others none`
+* How to add a new system user without login permissions?
+ * `give user with /bin/false shell`
+* How to add/remove a group from a user?
+ * `add: usermod -a -G groupname user; remove: gpasswd -d user groupname`
+* What is a bash alias?
+ * `nothing more than a keyboard shortcut, or abbreviation`
+* How do you set the mail address of the root/a user?
+ * `put mail address in your .forward file`
+* What does CTRL-c do?
+ * `kill a process with the signal SIGINT`
+* What is in /etc/services?
+ * `associate human friendly name to machine friendly port`
+* How to redirect STDOUT and STDERR in bash? (> /dev/null 2>&1) 
+ * `> is STDOUT, 2> is STDERR`
+* What is the difference between UNIX and Linux.
+ * `Linux is a UNIX clone and free software; UNIX is not free, and was created by AT&T Bell Labs.`
+* What is the difference between Telnet and SSH?
+ * `SSH encryptes the communication, Telnet not.`
+* Explain the three load averages and what do they indicate.
+ * `last 1 min, 5mins, and 15mins`
+* Can you name a lower-case letter that is not a valid option for GNU ```ls```?
+ * `-y`
 
 
 ####[[⬆]](#toc) <a name='medium'>Medium Linux Questions:</a>
