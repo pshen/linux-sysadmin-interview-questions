@@ -246,16 +246,28 @@ echo $(( 5000 * 1024 * 1024 )) > /sys/fs/cgroup/memory/myGroup/memory.memsw.limi
 * What's happening when the Linux kernel is starting the OOM killer and how does it choose which process to kill first?
  * `The kernel maintains *oom_score* for each of the processes. ``` cat /proc/pid/oom_score ``` The higher the value, is likelihood of getting killed by OOM killer in an OOM situation.`
 * Describe the linux boot process with as much detail as possible, starting from when the system is powered on and ending when you get a prompt.
+ * `#TODO`
 * What's a chroot jail?
+ * ` http://unix.stackexchange.com/questions/105/chroot-jail-what-is-it-and-how-do-i-use-it
+A chroot jail is a way to isolate a process from the rest of the system. It should only be used for processes that don't run as root, as root users can break out of the jail very easily.
+
+The idea is that you create a directory tree where you copy or link in all the system files needed for a process to run. You then use the chroot system call to change the root directory to be at the base of this new tree and start the process running in that chroot'd environment. Since it can't actually reference paths outside the modified root, it can't maliciously read or write to those locations.
+
+On Linux, using a bind mounts is a great way to populate the chroot tree. Using that, you can pull in folders like /lib and /usr/lib while not pulling in /user, for example. Just bind the directory trees you want to directories you create in the jail directory.`
 * When trying to umount a directory it says it's busy, how to find out which PID holds the directory?
-* What's LD_PRELOAD and when it's used?
+ * `lsof PATH or fuser PATH to find the running process.`
+* What's LD_PRELOAD and when it's used
+ * `That object will be loaded before any other shared objects, in order to overwrite some selected functions.`
 * You ran a binary and nothing happened. How would you debug this?
+ * `use strace to figure out what's going on.`
 * What are cgroups? Can you specify a scenario where you could use them?
+ * `control groups, allow you to allocate resources (CPU, memory, bandwidth) among user-defined groups of tasks running on a system.`
 
 
 ####[[⬆]](#toc) <a name='expert'>Expert Linux Questions:</a>
 
 * A running process gets ```EAGAIN: Resource temporarily unavailable``` on reading a socket. How can you close this bad socket/file descriptor without killing the process?
+ * `#TODO`
 
 
 ####[[⬆]](#toc) <a name='network'>Networking Questions:</a>
