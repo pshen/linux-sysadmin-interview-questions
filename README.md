@@ -273,10 +273,19 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 ####[[⬆]](#toc) <a name='network'>Networking Questions:</a>
 
 * What is localhost and why would ```ping localhost``` fail?
+ * `localhost as a hostname translates to an IPv4 address in the 127.0.0.0/8 (loopback) net block, usually 127.0.0.1, or ::1 in IPv6.`
+ * `if it fails, then no mapping in /etc/hosts`
 * What is the similarity between "ping" & "traceroute" ? How is traceroute able to find the hops.
+ * `ping & traceroute both send packets to the specific IP`
+ * `ping just sends one time packets, traceroute sends a series of packets with different low TTL (time to live) fields, which specify how many hops the packet is allowed.`
 * What is the command used to show all open ports and/or socket connections on a machine?
+ * `netstat -anp`
 * Is 300.168.0.123 a valid IPv4 address?
+ * `invalid address, 2^8.2^8.2^8.2^8`
 * Which IP ranges/subnets are "private" or "non-routable" (RFC 1918)?
+ * ` 10.0.0.0        -   10.255.255.255  (10/8 prefix)
+     172.16.0.0      -   172.31.255.255  (172.16/12 prefix)
+     192.168.0.0     -   192.168.255.255 (192.168/16 prefix)`
 * What is a VLAN?
 * What is ARP and what is it used for?
 * What is the difference between TCP and UDP?
