@@ -248,12 +248,12 @@ echo $(( 5000 * 1024 * 1024 )) > /sys/fs/cgroup/memory/myGroup/memory.memsw.limi
 * Describe the linux boot process with as much detail as possible, starting from when the system is powered on and ending when you get a prompt.
  * `#TODO`
 * What's a chroot jail?
- * ` http://unix.stackexchange.com/questions/105/chroot-jail-what-is-it-and-how-do-i-use-it
+ * ``` http://unix.stackexchange.com/questions/105/chroot-jail-what-is-it-and-how-do-i-use-it
 A chroot jail is a way to isolate a process from the rest of the system. It should only be used for processes that don't run as root, as root users can break out of the jail very easily.
 
 The idea is that you create a directory tree where you copy or link in all the system files needed for a process to run. You then use the chroot system call to change the root directory to be at the base of this new tree and start the process running in that chroot'd environment. Since it can't actually reference paths outside the modified root, it can't maliciously read or write to those locations.
 
-On Linux, using a bind mounts is a great way to populate the chroot tree. Using that, you can pull in folders like /lib and /usr/lib while not pulling in /user, for example. Just bind the directory trees you want to directories you create in the jail directory.`
+On Linux, using a bind mounts is a great way to populate the chroot tree. Using that, you can pull in folders like /lib and /usr/lib while not pulling in /user, for example. Just bind the directory trees you want to directories you create in the jail directory. ```
 * When trying to umount a directory it says it's busy, how to find out which PID holds the directory?
  * `lsof PATH or fuser PATH to find the running process.`
 * What's LD_PRELOAD and when it's used
