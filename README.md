@@ -210,24 +210,41 @@ echo $(( 500 * 1024 * 1024 )) > /sys/fs/cgroup/memory/myGroup/memory.limit_in_by
 echo $(( 5000 * 1024 * 1024 )) > /sys/fs/cgroup/memory/myGroup/memory.memsw.limit_in_bytes ```
  * ``` cgexec -g memory:myGroup your_program ```
 * What is bash quick substitution/caret replace(^x^y)?
+ * `take the last cmd and replace x with y, run it again`
 * Do you know of any alternative shells? If so, have you used any?
+ * `ZSH, fish shell, but I'm not using other shells so often`
 * What is a tarpipe (or, how would you go about copying everything, including hardlinks and special files, from one server to another)?
+ * `tar preserves hardlinks`
+ * ``` tar -cf - . | ssh remote_server "tar -xpf -" ```
 
 ####[[⬆]](#toc) <a name='hard'>Hard Linux Questions:</a>
 
 * What is a tunnel and how you can bypass a http proxy?
+ * `SSH tunnel between your local machine and a remote server, using port forwarding to bypass http proxy or NAT`
 * What is the difference between IDS and IPS?
+ * `IDS->LOG vs IPS->LOG/DROP`
 * What shortcuts do you use on a regular basis?
+ * `Ctrl-d, Ctrl-z, <tab>, Ctrl-c, <middlebutton>`
 * What is the Linux Standard Base?
+ * `It's a joint project by several Linux distributions to standardize the software system structure, including filesystem hierarchy`
 * What is an atomic operation?
+ * `atomic operation provides instructions that execute atomically without interruption. It's never possible for two atomic operations to occur on the same variable concurrently. so not possible for the increments to race.`
 * Your freshly configured http server is not running after a restart, what can you do?
+ * `check logs, in rc levels ...`
 * What kind of keys are in ~/.ssh/authorized_keys and what it is this file used for?
+ * `public key in this file, the file is for key-auth`
 * I've added my public ssh key into authorized_keys but I'm still getting a password prompt, what can be wrong?
+ * `permission on the file should be 400`
 * Did you ever create RPM's, DEB's or solaris pkg's?
+ * #TODO
 * What does ```:(){ :|:& };:``` do on your system?
+ * `forkbomb`
 * How do you catch a Linux signal on a script?
+ * `in bash ``` trap [commands] [signals]``` `
 * Can you catch a SIGKILL?
+ * `No`
 * What's happening when the Linux kernel is starting the OOM killer and how does it choose which process to kill first?
+ * `The kernel maintains *oom_score* for each of the processes. ``` cat /proc/pid/oom_score ``` The higher the value, is likelihood of getting killed by OOM killer in an OOM situation.`
 * Describe the linux boot process with as much detail as possible, starting from when the system is powered on and ending when you get a prompt.
 * What's a chroot jail?
 * When trying to umount a directory it says it's busy, how to find out which PID holds the directory?
