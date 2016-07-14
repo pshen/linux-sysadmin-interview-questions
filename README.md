@@ -287,19 +287,34 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
      172.16.0.0      -   172.31.255.255  (172.16/12 prefix)
      192.168.0.0     -   192.168.255.255 (192.168/16 prefix)`
 * What is a VLAN?
+ * `broadcast domain that's partitioned and isolated.`
 * What is ARP and what is it used for?
+ * `Address resolution protocol, ARP is used for mapping a network address (e.g. an IPv4 address) to a physical address like an Ethernet address (also named a MAC address).`
 * What is the difference between TCP and UDP?
+ * `connection-oriented vs connectionless protocol`
 * What is the purpose of a default gateway?
+ * `intermediate device that connects your computer to internet.`
 * What is command used to show the routing table on a Linux box?
+ * `netstat -r or ip route`
 * A TCP connection on a network can be uniquely defined by 4 things. What are those things?
+ * `source IP/port, dest IP/port`
 * When a client running a web browser connects to a web server, what is the source port and what is the destination port of the connection?
+ * `web browser port as src port, web server port as destination` 
 * How do you add an IPv6 address to a specific interface?
+ * `#TODO`
 * You have added an IPv4 and IPv6 address to interface eth0. A ping to the v4 address is working but a ping to the v6 address gives yout the response ```sendmsg: operation not permitted```. What could be wrong?
+ * `#TODO`
 * What is SNAT and when should it be used?
+ * `#TODO`
 * Explain how could you ssh login into a Linux system that DROPs all new incoming packets using a SSH tunnel.
+ * `iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j DROP`
+ * `The idea is to drop all new state incoming traffic to tcp port 22`
 * How do you stop a DDoS attack?
+ * `#TODO`
 * How can you see content of an ip packet?
+ * `tcpdump wireshark`
 * What is IPoAC (RFC 1149)?
+ * `#TODO`
 
 
 ####[[⬆]](#toc) <a name='mysql'>MySQL questions:</a>
@@ -318,6 +333,7 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 * Can you describe your workflow when you create a script?
 * What is GIT?
 * What is a dynamically/statically linked file?
+ * `http://stackoverflow.com/questions/311882/what-do-statically-linked-and-dynamically-linked-mean`
 * What does "./configure && make && make install" do?
 * What is puppet/chef/ansible used for?
 * What is Nagios/Zenoss/NewRelic used for?
@@ -326,6 +342,7 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 * What is a virtual IP address? What is a cluster?
 * How do you print all strings of printable characters present in a file?
 * How do you find shared library dependencies?
+ * `ldd /bin/ls`
 * What is Automake and Autoconf?
 * ./configure shows an error that libfoobar is missing on your system, how could you fix this, what could be wrong?
 * What are the advantages/disadvantages of script vs compiled program?
@@ -335,11 +352,16 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 ####[[⬆]](#toc) <a name='fun'>Fun Questions:</a>
 
 * A careless sysadmin executes the following command: ```chmod 444 /bin/chmod ``` - what do you do to fix this?
+  * `cp the file from remote server or use some functions in other program languages`
 * I've lost my root password, what can I do?
+  * `take the disk out and mount it somewhere else`
 * I've rebooted a remote server but after 10 minutes I'm still not able to ssh into it, what can be wrong?
+  * `server is stuck in the boot procedure.`
 * If you were stuck on a desert island with only 5 command-line utilities, which would you choose?
 * You come across a random computer and it appears to be a command console for the universe. What is the first thing you type?
+  * `help`
 * Tell me about a creative way that you've used SSH?
+  * `ssh -D`
 * You have deleted by error a running script, what could you do to restore it?
 * What will happen on 19 January 2038?
 
@@ -347,14 +369,21 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 ####[[⬆]](#toc) <a name='demo'>Demo Time:</a>
 
 * Unpack test.tar.gz without man pages or google.
+ * `tar -xzf test.tar.gz`
 * Remove all "*.pyc" files from testdir recursively?
+ * `find test -type f -name \*.pyc | xargs rm -f`
 * Search for "my konfu is the best" in all *.py files.
+ * `grep "my konfu is the best" \*.py`
 * Replace the occurrence of "my konfu is the best" with "I'm a linux jedi master" in all *.txt files.
 * Test if port 443 on a machine with IP address X.X.X.X is reachable.
+ * `telnet x.x.x.x 443`
 * Get http://myinternal.webserver.local/test.html via telnet.
+ * `telnet myinternal.webserver.local 80`
+ * `GET /test.html`
 * How to send an email without a mail client, just on the command line?
 * Write a ```get_prim``` method in python/perl/bash/pseudo.
 * Find all files which have been accessed within the last 30 days.
+ * `find somewhere -type f -atime -30`
 * Explain the following command ```(date ; ps -ef | awk '{print $1}' | sort | uniq | wc -l ) >> Activity.log```
 * Write a script to list all the differences between two directories.
 * In a log file with contents as ```<TIME> : [MESSAGE] : [ERROR_NO] - Human readable text``` display summary/count of specific error numbers that occurred every hour or a specific hour.
