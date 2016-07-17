@@ -42,13 +42,20 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * Tell me about the biggest mistake you've made in [some recent time period] and how you would do it differently today. What did you learn from this experience?
 * Why we must choose you?
 * What function does DNS play on a network?
+ * `domain -> IP`
 * What is HTTP?
+ * `Hypertext Transfer Protocol, an application protocol, foundation of WWW`
 * What is an HTTP proxy and how does it work?
+ * `CLIENT <---> PROXY <---> SERVER`
 * Describe briefly how HTTPS works.
+ * `SSL/TLS encryption layer on top of HTTP; HELLO, certificate exchange, key exchange, http://robertheaton.com/2014/03/27/how-does-https-actually-work/`
 * What is SMTP? Give the basic scenario of how a mail message is delivered via SMTP.
+ * `Simple Mail Transfer Protocol`
 * What is RAID? What is RAID0, RAID1, RAID5, RAID10?
+ * `redundant array of independent(or inexpensive) disks; RAID10=RAID(1+0)`
 * What is a level 0 backup? What is an incremental backup?
 * Describe the general file system hierarchy of a Linux system.
+ * `/ /boot /dev /etc /home /lib /mnt /opt /proc /root /sbin /tmp /var /usr`
 
 
 ####[[⬆]](#toc) <a name='simple'>Simple Linux Questions:</a>
