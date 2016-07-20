@@ -91,7 +91,7 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * What does the permission 0750 on a directory mean?
  * `user rw and go into; group r and go into; others none`
 * How to add a new system user without login permissions?
- * `give user with /bin/false shell`
+ * `give the new user /bin/false shell`
 * How to add/remove a group from a user?
  * `add: usermod -a -G groupname user; remove: gpasswd -d user groupname`
 * What is a bash alias?
@@ -148,7 +148,7 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * What does the immutable bit do to a file?
  * `a file with immutable bit can NOT be modified/renamed/deleted and no hard/soft link can be created; only root user can add immutable bit, for example: chattr +i/-i filename and lsattr filename`
 * What is the difference between hardlinks and symlinks? What happens when you remove the source to a symlink/hardlink?
- * `hardlink and file points to the same inode; soft link points to a different inode(->datablock). That datablock points to the file. When there is no inode pointing to the datablock, the datablock will be removed by the VFS.`
+ * `hardlink and file points to the same inode; soft link points to a different inode(->datablock). That datablock points to the file. When there is pointer pointing to the same inode, the datablock of the inode will be removed by the VFS.`
 * What is an inode and what fields are stored in an inode?
  * `inode is index node, which is a data structure which represents to the file system object. Each inode stores the attributes and disk block location(s) of the filesystem object's data.`
 * How to force/trigger a file system check on next reboot?
@@ -164,7 +164,7 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * What are the steps to add a user to a system without using useradd/adduser?
  * `edit /etc/passwd; edit /etc/group; create home dir; setup password by passwd cmd`
 * What is MAJOR and MINOR numbers of special files?
- * `MAJOR number identifies the driver associates with the device, i.e /dev/null to driver 1; MINOR number is used by the kernel to determine exactly which device is being referred to. i.e. a direct pointer to your dvice from the kernel`
+ * `MAJOR number identifies the driver associates with the device, i.e /dev/null to driver 1; MINOR number is used by the kernel to determine exactly which device is being referred to. i.e. a direct pointer to your device from the kernel`
 * Describe the mknod command and when you'd use it.
  * `make block or character special files; create a named pipe. one process reads from it, another writes to it.`
 * Describe a scenario when you get a "filesystem is full" error, but 'df' shows there is free space.
@@ -188,7 +188,7 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * Describe briefly the steps you need to take in order to create and install a valid certificate for the site https://foo.example.com.
  * `create private key, generate csr request file, send to CA, get the signed valid cert and install in the apache server. cert with intermediate cert and priv key`
 * Can you have several HTTPS virtual hosts sharing the same IP?
- * `Yes, as long as the server supports SNI (server name indication)`
+ * `Yes, even with same port as long as the server supports SNI (server name indication)`
 * What is a wildcard certificate?
  * `a certificate can be used for all subdomains, i.e \*.google.com`
 * Which Linux file types do you know?
@@ -207,7 +207,7 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * What does the column 'reach' mean in ```ntpq -p``` output?
  * #TODO
 * You need to upgrade kernel at 100-1000 servers, how you would do this?
- * use some centralized configuration software, like puppet or cfengine.
+ * use some centralized configuration software, like puppet or ansible.
 * How can you get Host, Channel, ID, LUN of SCSI disk?
  * ```cat /proc/scsi/scsi```
 * How can you limit process memory usage?
@@ -288,7 +288,7 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 * What is the command used to show all open ports and/or socket connections on a machine?
  * `netstat -anp`
 * Is 300.168.0.123 a valid IPv4 address?
- * `invalid address, 2^8.2^8.2^8.2^8`
+ * `invalid address, 2^8-1.2^8-1.2^8-1.2^8-1`
 * Which IP ranges/subnets are "private" or "non-routable" (RFC 1918)?
  * ` 10.0.0.0        -   10.255.255.255  (10/8 prefix)
      172.16.0.0      -   172.31.255.255  (172.16/12 prefix)
@@ -317,7 +317,10 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
  * `iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j DROP`
  * `The idea is to drop all new state incoming traffic to tcp port 22`
 * How do you stop a DDoS attack?
- * `#TODO`
+ * `ask your dns and datacenter provider, which kind of ddos mitigation service they provide.`
+ * `ask your upstream IPS to filter out the traffic you don't want to receive.`
+ * `in your web application, drop all the BAD requests.`
+ * `warn the users in advance that a DDoS attack would come.`
 * How can you see content of an ip packet?
  * `tcpdump wireshark`
 * What is IPoAC (RFC 1149)?
@@ -332,6 +335,7 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 * Explain briefly the differences between InnoDB and MyISAM.
 * Describe briefly the steps you need to follow in order to create a simple master/slave cluster.
 * Why should you run "mysql_secure_installation" after installing MySQL?
+ * `remove test dbs/users and setup the root password`
 * How do you check which jobs are running?
 
 
@@ -345,6 +349,8 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 * What is puppet/chef/ansible used for?
 * What is Nagios/Zenoss/NewRelic used for?
 * What is the difference between Containers and VMs?
+ * `containers fast to start, it's based on only one OS`
+ * `Windows VM can run on Linux OS`
 * How do you create a new postgres user?
 * What is a virtual IP address? What is a cluster?
 * How do you print all strings of printable characters present in a file?
@@ -362,14 +368,17 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
   * `cp the file from remote server or use some functions in other program languages`
 * I've lost my root password, what can I do?
   * `take the disk out and mount it somewhere else`
+  * `use recovery mode, like Ubuntu provides`
 * I've rebooted a remote server but after 10 minutes I'm still not able to ssh into it, what can be wrong?
   * `server is stuck in the boot procedure.`
+  * `IP wrongly configured`
 * If you were stuck on a desert island with only 5 command-line utilities, which would you choose?
 * You come across a random computer and it appears to be a command console for the universe. What is the first thing you type?
   * `help`
 * Tell me about a creative way that you've used SSH?
   * `ssh -D`
 * You have deleted by error a running script, what could you do to restore it?
+  * `If you have backup, then...`
 * What will happen on 19 January 2038?
 
 
@@ -382,12 +391,22 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 * Search for "my konfu is the best" in all *.py files.
  * `grep "my konfu is the best" \*.py`
 * Replace the occurrence of "my konfu is the best" with "I'm a linux jedi master" in all *.txt files.
+ * `sed -e "s/my kongfu is the best/I'm a linux jedi master/g" example.txt > example.new`
 * Test if port 443 on a machine with IP address X.X.X.X is reachable.
  * `telnet x.x.x.x 443`
 * Get http://myinternal.webserver.local/test.html via telnet.
  * `telnet myinternal.webserver.local 80`
  * `GET /test.html`
 * How to send an email without a mail client, just on the command line?
+ * `telnet foobar 25`
+ * `HELO yourname.yourhost`
+ * `MAIL FROM: yourname@yourhost`
+ * `RCPT TO: hisname@hishost`
+ * `DATA`
+ * ` `
+ * ` `
+ * `.`
+ * `QUIT`
 * Write a ```get_prim``` method in python/perl/bash/pseudo.
 * Find all files which have been accessed within the last 30 days.
  * `find somewhere -type f -atime -30`
