@@ -131,6 +131,10 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
  * `If a command is terminated by the control operator &, the shell executes the command in the background in a subshell. The shell does not wait for the command to finish, and the return status is 0.`
 * What does ```& disown``` after a command do?
  * `run the previous cmd in subshell, and run disown immediately`
+ * `http://unix.stackexchange.com/questions/3886/difference-between-nohup-disown-and/148698#148698`
+ * `& puts the job in the background, that is, makes it block on attempting to read input, and makes the shell not wait for its completion.`
+ * `disown removes the process from the shell's job control, but it still leaves it connected to the terminal. One of the results is that the shell won't send it a SIGHUP. Obviously, it can only be applied to background jobs, because you cannot enter it when a foreground job is running.`
+ * `nohup disconnects the process from the terminal, redirects its output to nohup.out and shields it from SIGHUP. One of the effects (the naming one) is that the process won't receive any sent NOHUP. It is completely independent from job control and could in principle be used also for foreground jobs (although that's not very useful).`
 * What is a packet filter and how does it work?
  * `a piece of software built into kernel which looks the header of packets and decide the fates of the packet. DROP, ACCEPT and so on`
 * What is Virtual Memory?
