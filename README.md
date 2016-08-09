@@ -209,9 +209,9 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * How many NTP servers would you configure in your local ntp.conf?
  * `if more than NTP server is required, then use four to avoid 'falseticker'`
 * What does the column 'reach' mean in ```ntpq -p``` output?
- * #TODO
+ * `#TODO`
 * You need to upgrade kernel at 100-1000 servers, how you would do this?
- * use some centralized configuration software, like puppet or ansible.
+ * `use some centralized automation configuration/provision software, like puppet or ansible.`
 * How can you get Host, Channel, ID, LUN of SCSI disk?
  * ```cat /proc/scsi/scsi```
 * How can you limit process memory usage?
