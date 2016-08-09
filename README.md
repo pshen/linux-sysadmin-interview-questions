@@ -257,7 +257,7 @@ echo $(( 5000 * 1024 * 1024 )) > /sys/fs/cgroup/memory/myGroup/memory.memsw.limi
 * What's happening when the Linux kernel is starting the OOM killer and how does it choose which process to kill first?
  * `The kernel maintains *oom_score* for each of the processes. ``` cat /proc/pid/oom_score ``` The higher the value, is likelihood of getting killed by OOM killer in an OOM situation.`
 * Describe the linux boot process with as much detail as possible, starting from when the system is powered on and ending when you get a prompt.
- * `#TODO`
+ * `BIOS,MBR,Grub,Kernel,init,Runlevel`
 * What's a chroot jail?
  * ``` http://unix.stackexchange.com/questions/105/chroot-jail-what-is-it-and-how-do-i-use-it
 A chroot jail is a way to isolate a process from the rest of the system. It should only be used for processes that don't run as root, as root users can break out of the jail very easily.
