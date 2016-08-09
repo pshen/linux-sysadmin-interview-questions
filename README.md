@@ -91,7 +91,7 @@ A collection of linux sysadmin/devops interview questions. Feel free to contribu
 * What does the permission 0750 on a directory mean?
  * `user rw and go into; group r and go into; others none`
 * How to add a new system user without login permissions?
- * `give the new user /bin/false shell`
+ * `give the new user /sbin/nologin shell`
 * How to add/remove a group from a user?
  * `add: usermod -a -G groupname user; remove: gpasswd -d user groupname`
 * What is a bash alias?
