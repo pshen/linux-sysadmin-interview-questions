@@ -358,6 +358,7 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 * How do you create a new postgres user?
 * What is a virtual IP address? What is a cluster?
 * How do you print all strings of printable characters present in a file?
+ * `strings foobar`
 * How do you find shared library dependencies?
  * `ldd /bin/ls`
 * What is Automake and Autoconf?
@@ -369,10 +370,10 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 ####[[⬆]](#toc) <a name='fun'>Fun Questions:</a>
 
 * A careless sysadmin executes the following command: ```chmod 444 /bin/chmod ``` - what do you do to fix this?
-  * `cp the file from remote server or use some functions in other program languages`
+  * `cp the file from remote server or use some functions in other program languages like python`
 * I've lost my root password, what can I do?
   * `take the disk out and mount it somewhere else`
-  * `use recovery mode, like Ubuntu provides`
+  * `use recovery mode, like which Ubuntu provides`
 * I've rebooted a remote server but after 10 minutes I'm still not able to ssh into it, what can be wrong?
   * `server is stuck in the boot procedure.`
   * `IP wrongly configured`
@@ -382,7 +383,7 @@ On Linux, using a bind mounts is a great way to populate the chroot tree. Using 
 * Tell me about a creative way that you've used SSH?
   * `ssh -D`
 * You have deleted by error a running script, what could you do to restore it?
-  * `If you have backup, then...`
+  * `copy back from /proc/xxx`
 * What will happen on 19 January 2038?
 
 
